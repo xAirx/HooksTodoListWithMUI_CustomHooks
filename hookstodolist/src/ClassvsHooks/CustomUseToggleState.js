@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const UseToggleState = () => {
+ const UseToggleState = () => {
 
     const [toggled, setToggle] = useState("true")
 
@@ -11,7 +11,7 @@ const UseToggleState = () => {
            setToggle("true");
        };
     }
-
+    
    return (
        <>
        <h1> I am toggled {toggled}</h1>
@@ -21,3 +21,27 @@ const UseToggleState = () => {
 }
 
 export {UseToggleState};
+
+
+
+const Toggler = () => {
+    const [isHappy, setIsHappy] = useState(false);
+    const [isInLove, setInLove] = useState(true);
+
+    const toggleHappy = () => {
+        setIsHappy(!isHappy);
+    }
+    const toggleLove = () => {
+        setInLove(!isInLove);
+    }
+
+return (
+    <>
+    <button onClick={toggleHappy}>{isHappy ?  "😁" : "😰"}</button>
+    <button onClick={toggleLove}>{isInLove ? "😍" : "🥶"}</button>
+    </>
+)
+/* ()=> setIsHappy(!isHappy)}>{isHappy ? "happy" : "sad"}</button>  */
+}
+
+export {Toggler};
