@@ -20,4 +20,5 @@ function useUpdate(initialVal = "testdata") {
 
     return [state,change,reset,update];
 }
+
 export default useUpdate;
