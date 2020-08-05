@@ -6,6 +6,7 @@ import {Toggler}  from './ClassvsHooks//Toggler/Toggler';
 import SimpleformHooks from "./ClassvsHooks/Form/SimpleFormhooks";
 import Clicker from "./ClassvsHooks/useEffect/Clicker";
 import SWMovies from "./ClassvsHooks/useEffect/SWMovies";
+import SWMovies2 from "./ClassvsHooks/useEffect/SWMoviesv2";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <SimpleformHooks/>
       <Clicker />
       <SWMovies />
+      <SWMovies2 />
     </div>
   );
 }
