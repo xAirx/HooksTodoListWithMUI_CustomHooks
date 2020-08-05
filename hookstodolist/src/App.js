@@ -7,17 +7,19 @@ import SimpleformHooks from "./ClassvsHooks/Form/SimpleFormhooks";
 import Clicker from "./ClassvsHooks/useEffect/Clicker";
 import SWMovies from "./ClassvsHooks/useEffect/SWMovies";
 import SWMovies2 from "./ClassvsHooks/useEffect/SWMoviesv2";
+import TodoApp from "./TodoApp"
 
 export default function App() {
   return (
     <div className="App">
-      <Counter />
+      <TodoApp />
+     {/*  <Counter />
       <CounterHooks />
       <Toggler/>
       <SimpleformHooks/>
       <Clicker />
       <SWMovies />
-      <SWMovies2 />
+      <SWMovies2 /> */}
     </div>
   );
 }
