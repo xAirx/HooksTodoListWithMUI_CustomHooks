@@ -12,7 +12,14 @@
 
 ---------------------------Theming with Styled Components context API + Hooks + Dark light  mode-------------------------
 					
-					https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
+					Material UI with Styled Components
+					
+						https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
+						
+						https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
+
+						https://material-ui.com/blog/material-ui-v4-is-out/
+
 					
 
 					####What is the Theme Provider ?
