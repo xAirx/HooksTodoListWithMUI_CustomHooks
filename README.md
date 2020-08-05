@@ -10,14 +10,15 @@
 ### Implement Dark and Light mode using Context API Styled Components and Theming 
 
 
+https://jsramblings.com/migrating-to-styled-components-cheatsheet/
+
+
 ---------------------------Theming with Styled Components context API + Hooks + Dark light  mode-------------------------
 					
 					Material UI with Styled Components
 					
 						https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
 						
-						https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
-
 						https://material-ui.com/blog/material-ui-v4-is-out/
 
 					
