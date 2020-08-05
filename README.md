@@ -17,10 +17,7 @@ https://jsramblings.com/migrating-to-styled-components-cheatsheet/
 					
 					Material UI with Styled Components
 					
-						https://www.sipios.com/blog-tech/how-to-use-styled-components-with-material-ui-in-a-react-app
-						
-						https://material-ui.com/blog/material-ui-v4-is-out/
-
+						https://www.johnvincent.io/material-ui/material-ui-styled-components/
 					
 
 					####What is the Theme Provider ?
