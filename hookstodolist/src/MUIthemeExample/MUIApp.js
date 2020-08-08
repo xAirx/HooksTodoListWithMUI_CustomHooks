@@ -15,11 +15,7 @@ You can leverage this preference dynamically with the useMediaQuery hook and the
 
 For instance, you can enable the dark mode automatically: */
 
-      /* const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-      const themeConfig = React.useMemo(
-            () => myTheme(prefersDarkMode ? "dark" : "light"),
-            [prefersDarkMode]
-      ); */
+
 
        const [themeObject, toggleDarkMode] = useDarkmode();
        console.log("THIS IS THEME INSIDE APP", themeObject);
