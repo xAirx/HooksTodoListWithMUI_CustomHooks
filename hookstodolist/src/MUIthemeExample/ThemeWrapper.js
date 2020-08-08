@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: all 0.25s linear;
   }`;
 
+
 function ThemeWrapper({ children, theme }) {
 
     console.log("THIS IS THEME INSIDE THEMEWRAPPER", theme)
