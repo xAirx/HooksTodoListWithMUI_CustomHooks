@@ -26,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
   }`;
 
 function ThemeWrapper({ children, theme }) {
+    console.log("THIS IS THEME INSIDE THEMEWRAPPER", theme)
     return (
         <>
             <ThemeProvider theme={theme}>
