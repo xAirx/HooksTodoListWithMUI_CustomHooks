@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import VanillaThemingApp from './VanillaThemingExample/VanillaThemingApp';
 import * as serviceWorker from './serviceWorker';
+import StyledThemingApp from './StyledThemingExample/StyledThemingApp';
+import MUIApp from './MUIthemeExample/MUIApp';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
+   <React.StrictMode>
+   {/*  <VanillaThemingApp /> */}
+    <MUIApp />
+    {/* <StyledThemingApp/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

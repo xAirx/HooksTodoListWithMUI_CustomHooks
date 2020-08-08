@@ -12,7 +12,7 @@ function TodoApp() {
 
     return (
         // Using it as a container for everything that has a background color
-        <Paper >
+        <Paper variant="outlined" square  elevation={3}>
             Test
         </Paper>
     )

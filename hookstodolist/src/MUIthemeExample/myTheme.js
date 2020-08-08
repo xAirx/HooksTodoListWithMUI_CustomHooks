@@ -4,8 +4,7 @@ import { blue, pink } from '@material-ui/core/colors';
 
 function myTheme(themeName = 'light') {
     let theme = createMuiTheme({
-
-        themeName: "MyThemeName",
+        themeName: "Light",
         typography: {
             useNextVariants: true,
             fontFamily: [
