@@ -1,4 +1,4 @@
 import ThemeWrapper, {GlobalStyle} from './ThemeWrapper';
-import {themeConfig, useDarkmode} from './myTheme';
+import {themeObject, useDarkmode} from './myTheme';
 
-export {ThemeWrapper, themeConfig, useDarkmode, GlobalStyle};
+export {ThemeWrapper, themeObject, useDarkmode, GlobalStyle};

@@ -5,7 +5,7 @@ import { blue, pink } from '@material-ui/core/colors';
 /*
 function myTheme(themeName = 'light') {
  */
-    const themeConfig ={/* = createMuiTheme({ */
+    const themeObject ={/* = createMuiTheme({ */
         /* themeName: "light", */
        /*  typography: {
             useNextVariants: true,
@@ -38,11 +38,11 @@ function myTheme(themeName = 'light') {
         },
     };
 
-    console.log(themeConfig);
+    console.log(themeObject);
     /* themeConfig = responsiveFontSizes(themeConfig); */
 
     const useDarkmode = () => {
-        const [theme, setTheme] = useState(themeConfig)
+        const [theme, setTheme] = useState(themeObject)
         console.log("THIS IS INSIDE USEDARKMODE");
         const { palette : { type }} = theme;
         const toggleDarkMode = () => {
@@ -65,4 +65,7 @@ function myTheme(themeName = 'light') {
  /*    return theme;
 }
  */
-export {themeConfig, useDarkmode};
+export {themeObject, useDarkmode};
+/*
+
+https://egghead.io/lessons/react-create-a-react-hook-to-toggle-between-light-and-dark-mode-inside-of-material-ui-themes */
