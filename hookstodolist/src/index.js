@@ -8,8 +8,8 @@ import MUIApp from './MUIthemeExample/MUIApp';
 
 ReactDOM.render(
    <React.StrictMode>
-   {/*  <VanillaThemingApp /> */}
-    <MUIApp />
+    <VanillaThemingApp />
+    {/*   <MUIApp /> */}
     {/* <StyledThemingApp/> */}
   </React.StrictMode>,
   document.getElementById('root')
