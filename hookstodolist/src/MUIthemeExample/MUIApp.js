@@ -1,10 +1,10 @@
 import React,{useState} from "react";
 import "./../css/style.css";
-import TodoApp from '../TodoApp';
 import {useMediaQuery, FormControlLabel, createMuiTheme} from '@material-ui/core';
 import {ThemeWrapper, themeObject, useDarkmode} from './index';
 import { Button} from '@material-ui/core';
 import { Switch, FromControlLabel } from '@material-ui/core';
+import Paper from "@material-ui/core/Paper";
 
 
 
@@ -27,10 +27,12 @@ For instance, you can enable the dark mode automatically: */
   return (
       <ThemeWrapper theme={themeConfig}>
             <div className="App">
-            <TodoApp />
-            <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
-            <Button color="Secondary">test</Button>
-            <h1>TEST</h1>
+            <Paper  /* className={"Paper-root"} */ variant="outlined" square  elevation={3}>
+              <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
+              <h1>TEST</h1>
+              <Button color="secondary">test</Button>
+
+            </Paper>
             </div>
       </ThemeWrapper>
   );

@@ -7,7 +7,7 @@ import SimpleformHooks from "../ClassvsHooks/Form/SimpleFormhooks";
 import Clicker from "../ClassvsHooks/useEffect/Clicker";
 import SWMovies from "../ClassvsHooks/useEffect/SWMovies";
 import SWMovies2 from "../ClassvsHooks/useEffect/SWMoviesv2";
-import TodoApp from "../TodoApp"
+import Paper from "@material-ui/core/Paper";
 
 
 ////////////////////// Styled Theming Example ////////////////////
@@ -22,10 +22,11 @@ export default function StyledThemingApp() {
     <ThemeProvider theme={{ mode: 'dark', layout: 'compact' }}>
       <Wrapper>
       <StyledContent>
-        <TodoApp />
+         {/* <Paper  variant="outlined" square  elevation={3}> */}
          <Button small>
           Sign in
          </Button>
+   {/*       </Paper> */}
        </StyledContent>
       </Wrapper>
     </ThemeProvider>
