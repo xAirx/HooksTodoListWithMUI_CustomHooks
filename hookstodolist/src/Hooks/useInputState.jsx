@@ -9,15 +9,15 @@ function useUpdate(initialVal = 'testdata') {
     setState(e.target.value);
   };
 
-  const change = () => {
+  /*  const change = () => {
     setState('testxxx');
   };
-
+ */
   const reset = () => {
     setState('');
   };
 
-  return [state, change, reset, update];
+  return [state, update, reset];
 }
 
 export default useUpdate;

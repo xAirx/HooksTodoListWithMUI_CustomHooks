@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 import { useState } from 'react';
-import { blue, pink } from '@material-ui/core/colors';
+import { blue, pink, grey } from '@material-ui/core/colors';
 
 /*
 function myTheme(themeName = 'light') {
@@ -27,14 +27,16 @@ const themeObject = { /* = createMuiTheme({ */
      }, */
   palette: {
     primary: {
-      light: blue[800],
-      main: blue[500],
-      dark: blue[500],
+      light: '#fafafa',
+      main: '#fafafa',
+      dark: '#fafafa',
+      contrastText: '#fff',
     },
     secondary: {
-      light: pink[800],
-      main: pink[500],
-      dark: pink[500],
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
     },
     type: 'light',
   },
