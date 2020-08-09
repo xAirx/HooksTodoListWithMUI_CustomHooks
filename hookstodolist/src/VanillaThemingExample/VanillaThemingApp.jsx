@@ -1,6 +1,7 @@
-import React,{useState} from 'react';
-import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
-
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -48,22 +49,22 @@ const lightTheme = {
   text: '#363537',
   toggleBorder: '#fff',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
-}
+};
 
 const darkTheme = {
   body: '#363537',
   text: '#FAFAFA',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
-}
+};
 
 const Toggle = ({ theme, toggleTheme }) => {
   const isLight = theme === 'light';
 
   return (
     <ToggleContainer lightTheme={isLight} onClick={toggleTheme}>
-      <img src="https://image.flaticon.com/icons/svg/1164/1164954.svg" width="224" height="224" alt="Sun free icon" title="Sun free icon"/>
-      <img src="https://image.flaticon.com/icons/svg/2033/2033921.svg" width="224" height="224" alt="Moon free icon" title="Moon free icon"/>
+      <img src="https://image.flaticon.com/icons/svg/1164/1164954.svg" width="224" height="224" alt="Sun free icon" title="Sun free icon" />
+      <img src="https://image.flaticon.com/icons/svg/2033/2033921.svg" width="224" height="224" alt="Moon free icon" title="Moon free icon" />
     </ToggleContainer>
   );
 };
@@ -89,11 +90,11 @@ const ToggleContainer = styled.button`
     transition: all 0.3s linear;
 
     &:first-child {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(0)' : 'translateY(100px)'};
+      transform: ${({ lightTheme }) => (lightTheme ? 'translateY(0)' : 'translateY(100px)')};
     }
 
     &:nth-child(2) {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-100px)' : 'translateY(0)'};
+      transform: ${({ lightTheme }) => (lightTheme ? 'translateY(-100px)' : 'translateY(0)')};
     }
   }
 `;
@@ -103,17 +104,15 @@ const useDarkMode = () => {
 
   const toggleTheme = () => {
     if (theme === 'light') {
-      setTheme('dark')
+      setTheme('dark');
       window.localStorage.setItem('theme', 'dark');
     } else {
-      setTheme('light')
+      setTheme('light');
       window.localStorage.setItem('theme', 'light');
     }
   };
 
-
-
-  return [theme, toggleTheme]
+  return [theme, toggleTheme];
 };
 
 export default function VanillaThemingApp() {
@@ -125,13 +124,38 @@ export default function VanillaThemingApp() {
       <div>
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
-        <h1>It's a {theme === 'light' ? 'light theme' : 'dark theme'}!</h1>
+        <h1>
+          Its a
+          {' '}
+          {theme === 'light' ? 'light theme' : 'dark theme'}
+          !
+        </h1>
         <footer>
           <span>Credits:</span>
-          <small><b>Sun</b> icon made by <a href="https://www.flaticon.com/authors/smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com">www.flaticon.com</a></small>
-          <small><b>Moon</b> icon made by <a href="https://www.freepik.com/home">Freepik</a> from <a href="https://www.flaticon.com">www.flaticon.com</a></small>
+          <small>
+            <b>Sun</b>
+            {' '}
+            icon made by
+            {' '}
+            <a href="https://www.flaticon.com/authors/smalllikeart">smalllikeart</a>
+            {' '}
+            from
+            {' '}
+            <a href="https://www.flaticon.com">www.flaticon.com</a>
+          </small>
+          <small>
+            <b>Moon</b>
+            {' '}
+            icon made by
+            {' '}
+            <a href="https://www.freepik.com/home">Freepik</a>
+            {' '}
+            from
+            {' '}
+            <a href="https://www.flaticon.com">www.flaticon.com</a>
+          </small>
         </footer>
       </div>
     </ThemeProvider>
   );
-};
+}

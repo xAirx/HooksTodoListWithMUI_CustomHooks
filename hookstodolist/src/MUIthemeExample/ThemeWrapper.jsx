@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React from 'react';
 /* import PropTypes from 'prop-types';
  */
@@ -25,22 +27,20 @@ export const GlobalStyle = createGlobalStyle`
     transition: all 0.25s linear;
   }`;
 
-
 function ThemeWrapper({ children, theme }) {
-
-    console.log("THIS IS THEME INSIDE THEMEWRAPPER", theme)
-    return (
-        <>
-            <ThemeProvider theme={theme}>
-                <StylesProvider injectFirst>
-                    <MuiThemeProvider theme={theme}>
-                        <GlobalStyle />
-                            <CssBaseline/>
-                                {children}
-                    </MuiThemeProvider>
-                </StylesProvider>
-            </ThemeProvider>
-        </>
-    )
+  console.log('THIS IS THEME INSIDE THEMEWRAPPER', theme);
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <StylesProvider injectFirst>
+          <MuiThemeProvider theme={theme}>
+            <GlobalStyle />
+            <CssBaseline />
+            {children}
+          </MuiThemeProvider>
+        </StylesProvider>
+      </ThemeProvider>
+    </>
+  );
 }
 export default ThemeWrapper;
