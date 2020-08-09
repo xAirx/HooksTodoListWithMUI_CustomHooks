@@ -37,9 +37,9 @@ export default function MUIapp() {
       marginRight: themeConfig.spacing(2),
     },
     toolbar: {
-      minHeight: 128,
+      minHeight: 50,
       alignItems: 'flex-start',
-      paddingTop: themeConfig.spacing(1),
+      paddingTop: themeConfig.spacing(0),
       paddingBottom: themeConfig.spacing(2),
     },
     title: {
@@ -66,7 +66,7 @@ export default function MUIapp() {
   return (
     <ThemeWrapper theme={themeConfig}>
       <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="transparent">
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -80,21 +80,13 @@ export default function MUIapp() {
             Material-UI
           </Typography>
           <IconButton aria-label="search" color="inherit">
+          <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
           </IconButton>
           <IconButton aria-label="display more actions" edge="end" color="inherit">
-           {/*  <MoreIcon /> */}
+          <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
           </IconButton>
         </Toolbar>
       </AppBar>
-      <AppBar position="static">
-            <Toolbar variant="dense">
-              <IconButton edge="start" color="inherit" aria-label="menu">
-              <Typography variant="h6" color="inherit">
-                <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
-              </Typography>
-              </IconButton>
-            </Toolbar>
-          </AppBar>
         <Paper  className={classes.muipaper} variant="outlined" square elevation={3}>
         </Paper>
       </div>
