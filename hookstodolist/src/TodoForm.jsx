@@ -14,7 +14,10 @@ function Todoform({ addTodo }) {
   const [value, HandleChange, reset] = useInputState('');
 
   const useStyles = makeStyles((theme) => ({
-    muipaper: {
+    textfield: {
+      textAlign: 'center',
+    },
+    formpaper: {
       /* root: { */
     /*   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', */
       border: 0,
@@ -24,9 +27,12 @@ function Todoform({ addTodo }) {
       /* height: 48, */
       /*  padding: '0 30px', */
       /*       height: , */
-      padding: theme.spacing(2),
+      /* padding: theme.spacing(2), */
       textAlign: 'center',
       color: theme.palette.text.secondary,
+      margin: '1rem 0',
+      padding: '0 1rem',
+
       /* } */
     },
   }));
@@ -38,16 +44,18 @@ function Todoform({ addTodo }) {
 
   return (
 
-    <Paper className={classes.muipaper} variant="outlined" square elevation={3}>
+    <Paper className={classes.formpaper} variant="outlined" square elevation={3}>
       <form onSubmit={(e) => {
         e.preventDefault();
+        // addtodo is passed from MUIAPP.jsx, we use it to set the new todo.
         addTodo(value);
         reset();
       }}
       >
-        <TextField value={value} onChange={HandleChange} />
-        <Button type="submit">Submit</Button>
+        <TextField fullwidth label="Filled" variant="filled" className={classes.textfield} margin="normal" label="Add New Todo" value={value} onChange={HandleChange} />
       </form>
+      <Button className={classes.button} type="submit">Submit</Button>
+
     </Paper>
 
   );

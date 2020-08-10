@@ -2,10 +2,9 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
+import Todo from './Todos';
 
 function TodoList(props) {
   // here we are overwriting everything in setTodos, we are going to pass in the existing todos
@@ -42,11 +41,7 @@ function TodoList(props) {
         <List>
           {todos.map((todo) => (
             <>
-              <ListItem>
-                <ListItemText>
-                  <li>{todo.task}</li>
-                </ListItemText>
-              </ListItem>
+              <Todo task={todo.task} key={todo.id} completed={todo.completed} />
               <Divider />
             </>
           ))}

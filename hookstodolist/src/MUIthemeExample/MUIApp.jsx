@@ -7,7 +7,7 @@ import {
   FormControlLabel, createMuiTheme, Switch,
   IconButton,
 } from '@material-ui/core';
-
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -99,7 +99,7 @@ export default function MUIapp() {
 
   const initialTodos = [
     { id: 1, task: 'Buy Cucumber', completed: false },
-    { id: 2, task: 'Buy Eggs', completed: false },
+    { id: 2, task: 'Buy Eggs', completed: true },
     { id: 3, task: 'Buy Bread', completed: false },
   ];
 
@@ -109,6 +109,14 @@ export default function MUIapp() {
     setTodos([...todos, { id: 4, task: newTodoText, completed: false }]);
   };
 
+  /// /////
+  /// /////
+  /// /////
+  /// /////
+  /// /////
+  /// /////
+  /// /////
+  /// /////
   return (
     <ThemeWrapper theme={themeConfig}>
       <div className={classes.root}>
@@ -137,9 +145,14 @@ export default function MUIapp() {
           </Toolbar>
         </AppBar>
         <Paper className={classes.muipaper} variant="outlined" square elevation={3}>
-          <TodoList todos={todos} />
-          <TodoForm addTodo={addTodo} />
+          <Grid container justify="center" style={{ marginTop: '1rem' }}>
+            <Grid item xs={11} md={8} lg={4}>
+              <TodoList todos={todos} />
+              <TodoForm addTodo={addTodo} />
+            </Grid>
+          </Grid>
         </Paper>
+
       </div>
     </ThemeWrapper>
   );
