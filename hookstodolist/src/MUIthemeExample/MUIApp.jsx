@@ -133,13 +133,16 @@ export default function MUIapp() {
             <Typography className={classes.title} variant="h6" noWrap>
               Groceries App
             </Typography>
-            <IconButton aria-label="search" color="inherit">
+            {/*     <IconButton aria-label="search" color="inherit">
               <SearchIcon />
             </IconButton>
             <IconButton aria-label="display more actions" edge="end" color="inherit">
               <MoreVertIcon />
-            </IconButton>
-            <IconButton aria-label="display more actions" edge="end" color="inherit">
+            </IconButton> */}
+            <Typography className={classes.title} style={{ marginRight: '-11rem', marginLeft: '0rem' }} noWrap>
+              {themeObject.palette.type === 'light' ? 'Stay blind?' : 'Too dark?'}
+            </Typography>
+            <IconButton aria-label="light and dark mode toggle" edge="end" color="inherit">
               <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
             </IconButton>
           </Toolbar>
