@@ -18,14 +18,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import uuid from 'uuid/v4';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { ThemeWrapper, useDarkmode } from './index';
 import TodoList from '../TodoList';
 import TodoForm from '../TodoForm';
 
 export default function MUIapp() {
-  /*   Users might have specified a preference for a light or dark theme. The method by which the user expresses their preference can vary. It might be a system-wide setting exposed by the Operating System, or a setting controlled by the User Agent.
+  /*   Users might have specified a preference for a light or dark theme.
+  The method by which the user expresses their preference can vary.
+  It might be a system-wide setting exposed by the Operating System,
+  or a setting controlled by the User Agent.
 
-  You can leverage this preference dynamically with the useMediaQuery hook and the prefers-color-scheme media query.
+  You can leverage this preference dynamically with the useMediaQuery
+  hook and the prefers-color-scheme media query.
 
   For instance, you can enable the dark mode automatically: */
   /// /////
@@ -156,7 +162,10 @@ export default function MUIapp() {
   };
  */
   const toggleTodo = (todoId) => {
-    const updatedTodos = todos.map((todo) => (todo.id === todoId ? { ...todo, completed: !todo.completed } : todo));
+    const updatedTodos = todos.map((todo) => (todo.id === todoId ? {
+      ...todo,
+      completed: !todo.completed,
+    } : todo));
     setTodos(updatedTodos);
   };
 
@@ -190,28 +199,42 @@ export default function MUIapp() {
             <IconButton aria-label="display more actions" edge="end" color="inherit">
               <MoreVertIcon />
             </IconButton> */}
-            <Typography
-              className={classes.title}
-              style={{ marginRight: '-11rem', marginLeft: '0rem' }}
-              noWrap
-            >
-              {themeObject.palette.type === 'light' ? 'Stay blind?' : 'Too dark?'}
-            </Typography>
+
             <IconButton
               aria-label="light and dark mode toggle"
               edge="end"
               color="inherit"
             >
+              <Typography
+                className={classes.title}
+                style={{ marginRight: '20px', marginTop: '6px' }}
+                noWrap
+              >
+                {themeObject.palette.type === 'light'
+                  ? <Brightness7Icon />
+                  : <Brightness4Icon /> }
+              </Typography>
+
               <FormControlLabel
                 control={<Switch onClick={toggleDarkMode} />}
               />
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Paper className={classes.muipaper} variant="outlined" square elevation={3}>
+        <Paper
+          className={classes.muipaper}
+          variant="outlined"
+          square
+          elevation={3}
+        >
           <Grid container justify="center" style={{ marginTop: '1rem' }}>
             <Grid item xs={11} md={8} lg={4}>
-              <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
+              <TodoList
+                todos={todos}
+                removeTodo={removeTodo}
+                toggleTodo={toggleTodo}
+                editTodo={editTodo}
+              />
               <TodoForm addTodo={addTodo} />
             </Grid>
           </Grid>

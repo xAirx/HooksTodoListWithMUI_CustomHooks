@@ -35,6 +35,9 @@ function Todoform({ addTodo }) {
 
       /* } */
     },
+    button: {
+      padding: '35px',
+    },
   }));
 
   const classes = useStyles();
@@ -45,25 +48,26 @@ function Todoform({ addTodo }) {
   return (
 
     <Paper className={classes.formpaper} variant="outlined" square elevation={3}>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        // addtodo is passed from MUIAPP.jsx, we use it to set the new todo.
-        addTodo(value);
-        reset();
-      }}
+      <form
+        Validate
+        onSubmit={(e) => {
+          e.preventDefault();
+          // addtodo is passed from MUIAPP.jsx, we use it to set the new todo.
+          addTodo(value);
+          reset();
+        }}
       >
         <TextField
           fullwidth
          /*  label="Filled" */
-          variant="filled"
           className={classes.textfield}
           margin="normal"
           label="Add New Todo"
           value={value}
           onChange={HandleChange}
         />
+        <Button className={classes.button} type="submit">Submit</Button>
       </form>
-      <Button className={classes.button} type="submit">Submit</Button>
 
     </Paper>
 

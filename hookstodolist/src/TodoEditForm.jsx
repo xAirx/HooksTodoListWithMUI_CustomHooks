@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,7 @@ import useInputState from './Hooks/useInputState';
 
 function EditTodoForm({ id, editTodo, task }) {
   const [value, HandleChange, reset] = useInputState('');
+  const [isError, setError] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     textfield: {
@@ -35,7 +36,15 @@ function EditTodoForm({ id, editTodo, task }) {
 
       /* } */
     },
+    button: {
+      padding: '15px',
+    },
   }));
+
+  const CheckError = () => {
+    value === '' ? setError(true) : setError(false);
+    editTodo(id, value);
+  };
 
   const classes = useStyles();
   /// // works but eslint hates it ? /////
@@ -45,27 +54,48 @@ function EditTodoForm({ id, editTodo, task }) {
   return (
 
     <Paper className={classes.formpaper} variant="outlined" square elevation={3}>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        // addtodo is passed from MUIAPP.jsx, we use it to set the new todo.
-        editTodo(id, value);
+      <form
+        Validate
+        onSubmit={(e) => {
+          e.preventDefault();
+          // addtodo is passed from MUIAPP.jsx, we use it to set the new todo.
+          CheckError();
 
-        reset();
-      }}
+          reset();
+        }}
       >
-        <TextField
-          fullwidth
-         /*  label="Filled" */
-          variant="filled"
-          className={classes.textfield}
-          margin="normal"
-          label={task}
-          value={value}
 
-          onChange={HandleChange}
-        />
+        {isError ? (
+          <TextField
+            fullwidth
+      /*  label="Filled" */
+            className={classes.textfield}
+       /* margin="normal" */
+       /* label={task} */
+            value={value}
+            error={isError}
+            id="standard-error-helper-text"
+            label="Error"
+            defaultValue="Hello World"
+            helperText="Incorrect entry."
+
+            onChange={HandleChange}
+          />
+        )
+          : (
+
+            <TextField
+              fullwidth
+         /*  label="Filled" */
+              className={classes.textfield}
+          /* margin="normal" */
+          /* label={task} */
+              value={value}
+              onChange={HandleChange}
+            />
+          ) }
+        <Button className={classes.button} type="submit">Submit</Button>
       </form>
-      <Button className={classes.button} type="submit">Submit</Button>
 
     </Paper>
 
