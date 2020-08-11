@@ -1,3 +1,4 @@
+/* eslint-disable no-unneeded-ternary */
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
@@ -16,6 +17,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import uuid from 'uuid/v4';
 import { ThemeWrapper, useDarkmode } from './index';
 import TodoList from '../TodoList';
 import TodoForm from '../TodoForm';
@@ -105,8 +107,57 @@ export default function MUIapp() {
 
   const [todos, setTodos] = useState(initialTodos);
 
+  /// /////
+  /// /////
+
   const addTodo = (newTodoText) => {
-    setTodos([...todos, { id: 4, task: newTodoText, completed: false }]);
+    setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
+  };
+
+  /// /////
+  /// /////
+
+  const removeTodo = (todoId) => {
+    console.log('removetodocalled');
+    // filter out removed todo
+
+    const updatedTodos = todos.filter((todo) => todo.id !== todoId);
+    console.log(updatedTodos);
+    // call setTodos with new todosArray
+    setTodos(updatedTodos);
+    /* console.log('These are the updated todos', todos); */
+  };
+
+  /// /////
+  /// /////
+
+  const editTodo = (todoId, newTodoText) => {
+    console.log('editTodoCalled');
+    // filter out removed todo
+    /*  const updatedTodos = todos.filter((todo) => todo.id === todoId);
+   /*  console.log(updatedTodos); */
+    /*  updatedTodos.task = newTodoText; */
+    // call setTodos with new todosArray
+    const updatedTodos = todos.map((todo) => (todo.id === todoId ? { ...todo, task: newTodoText } : todo));
+    console.log('this is the new todos changed from edit', updatedTodos);
+    setTodos(updatedTodos);
+    /* console.log('These are the updated todos', todos); */
+  };
+
+  /// /////
+  /// /////
+
+  /*   const toggleTodo = (todoId, completed) => {
+    const grabbedTodo = todos.filter((todo) => todo.id !== todoId);
+    console.log(grabbedTodo);
+    grabbedTodo.completed = completed !== true;
+
+    setTodos(grabbedTodo);
+  };
+ */
+  const toggleTodo = (todoId) => {
+    const updatedTodos = todos.map((todo) => (todo.id === todoId ? { ...todo, completed: !todo.completed } : todo));
+    setTodos(updatedTodos);
   };
 
   /// /////
@@ -139,18 +190,28 @@ export default function MUIapp() {
             <IconButton aria-label="display more actions" edge="end" color="inherit">
               <MoreVertIcon />
             </IconButton> */}
-            <Typography className={classes.title} style={{ marginRight: '-11rem', marginLeft: '0rem' }} noWrap>
+            <Typography
+              className={classes.title}
+              style={{ marginRight: '-11rem', marginLeft: '0rem' }}
+              noWrap
+            >
               {themeObject.palette.type === 'light' ? 'Stay blind?' : 'Too dark?'}
             </Typography>
-            <IconButton aria-label="light and dark mode toggle" edge="end" color="inherit">
-              <FormControlLabel control={<Switch onClick={toggleDarkMode} />} />
+            <IconButton
+              aria-label="light and dark mode toggle"
+              edge="end"
+              color="inherit"
+            >
+              <FormControlLabel
+                control={<Switch onClick={toggleDarkMode} />}
+              />
             </IconButton>
           </Toolbar>
         </AppBar>
         <Paper className={classes.muipaper} variant="outlined" square elevation={3}>
           <Grid container justify="center" style={{ marginTop: '1rem' }}>
             <Grid item xs={11} md={8} lg={4}>
-              <TodoList todos={todos} />
+              <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
               <TodoForm addTodo={addTodo} />
             </Grid>
           </Grid>

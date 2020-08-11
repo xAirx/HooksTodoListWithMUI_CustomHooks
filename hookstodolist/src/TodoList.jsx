@@ -6,7 +6,9 @@ import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import Todo from './Todos';
 
-function TodoList(props) {
+function TodoList({
+  todos, removeTodo, toggleTodo, editTodo,
+}) {
   // here we are overwriting everything in setTodos, we are going to pass in the existing todos
   // and then we will concatenate a new object.
 
@@ -32,7 +34,7 @@ function TodoList(props) {
   /// // works but eslint hates it ? /////
   /*  const {...todos} = props.todos; */
   /// Correct way ///
-  const { todos } = props;
+  /*   const { todos, removeTodo } = props; */
 
   return (
 
@@ -41,7 +43,15 @@ function TodoList(props) {
         <List>
           {todos.map((todo) => (
             <>
-              <Todo task={todo.task} key={todo.id} completed={todo.completed} />
+              <Todo
+                id={todo.id}
+                task={todo.task}
+                todos={todos}
+                completed={todo.completed}
+                toggleTodo={toggleTodo}
+                editTodo={editTodo}
+                removeTodo={removeTodo}
+              />
               <Divider />
             </>
           ))}

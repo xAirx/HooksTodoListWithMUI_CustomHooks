@@ -10,7 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText'; */
 import { makeStyles } from '@material-ui/core/styles';
 import useInputState from './Hooks/useInputState';
 
-function Todoform({ addTodo }) {
+function EditTodoForm({ id, editTodo, task }) {
   const [value, HandleChange, reset] = useInputState('');
 
   const useStyles = makeStyles((theme) => ({
@@ -48,7 +48,8 @@ function Todoform({ addTodo }) {
       <form onSubmit={(e) => {
         e.preventDefault();
         // addtodo is passed from MUIAPP.jsx, we use it to set the new todo.
-        addTodo(value);
+        editTodo(id, value);
+
         reset();
       }}
       >
@@ -58,8 +59,9 @@ function Todoform({ addTodo }) {
           variant="filled"
           className={classes.textfield}
           margin="normal"
-          label="Add New Todo"
+          label={task}
           value={value}
+
           onChange={HandleChange}
         />
       </form>
@@ -70,4 +72,4 @@ function Todoform({ addTodo }) {
   );
 }
 
-export default Todoform;
+export default EditTodoForm;
