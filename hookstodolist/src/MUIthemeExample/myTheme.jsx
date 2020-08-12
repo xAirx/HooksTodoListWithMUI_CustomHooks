@@ -1,6 +1,7 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { blue, pink, purple } from '@material-ui/core/colors';
+import useLocalStorageState from '../Hooks/useLocalStorageState';
 
 /*
 function myTheme(themeName = 'light') {
@@ -64,7 +65,16 @@ const darkTheme = {
   },
 };
 
-let themeObject = lightTheme;
+const MatchMedia = window.matchMedia
+            && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // console.log('MatchMEDIA: THE PREFFERED MODE IS DARK', MatchMedia);
+
+let initialTheme = '';
+const preferredTheme = MatchMedia === true ? initialTheme = darkTheme : initialTheme = lightTheme;
+console.log('this is the preferredTheme', preferredTheme);
+
+let themeObject = preferredTheme;
+console.log('this is the ThemeObject', themeObject);
 
 /* {
   PaletteType === 'light' ? (
@@ -86,7 +96,7 @@ const useDarkmode = () => {
     console.log('THIS IS THEME.TYPE', themeObject);
     const updatedTheme = {
       ...themeObject,
-      type: themeObject === lightTheme ? themeObject = darkTheme : themeObject = lightTheme,
+      type: themeObject === darkTheme ? themeObject = lightTheme : themeObject = darkTheme,
     };
     setTheme(updatedTheme);
     console.log('THIS IS THEME', theme);

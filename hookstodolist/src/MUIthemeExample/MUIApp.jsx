@@ -187,6 +187,7 @@ custom hook. as seen below: useLocalStorageState.
               </Typography>
 
               <FormControlLabel
+                checked={themeObject.palette.type === 'dark'}
                 control={<Switch onClick={toggleDarkMode} />}
               />
             </IconButton>
