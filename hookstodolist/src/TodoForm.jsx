@@ -34,11 +34,14 @@ function Todoform({ addTodo }) {
       color: theme.palette.text.secondary,
       margin: '1rem 0',
       padding: '0 1rem',
+      boxShadow: '0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)',
 
       /* } */
     },
     button: {
-      padding: '35px',
+      padding: '15px',
+      marginTop: '10px',
+      marginBottom: '25px',
     },
   }));
 

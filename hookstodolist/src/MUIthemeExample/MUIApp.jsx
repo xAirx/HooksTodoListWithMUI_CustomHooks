@@ -46,14 +46,18 @@ export default function MUIapp() {
     root: {
       flexGrow: 1,
     },
+
     menuButton: {
       marginRight: themeConfig.spacing(2),
     },
     toolbar: {
-      minHeight: 128,
-      alignItems: 'flex-start',
-      paddingTop: themeConfig.spacing(1),
-      paddingBottom: themeConfig.spacing(3),
+      /*  minHeight: 128, */
+      /* alignItems: 'flex-center', */
+      /*  paddingTop: themeConfig.spacing(1), */
+      /* paddingBottom: themeConfig.spacing(3), */
+      background: themeConfig.palette.background.paper,
+      boxShadow: '0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)',
+
     },
     title: {
       flexGrow: 1,
@@ -153,7 +157,7 @@ custom hook. as seen below: useLocalStorageState.
     <ThemeWrapper theme={themeConfig}>
       <div className={classes.root}>
         <AppBar position="static" color="transparent">
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             <IconButton
               edge="start"
             /* className={classes.menuButton} */
