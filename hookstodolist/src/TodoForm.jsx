@@ -63,9 +63,11 @@ function Todoform({ addTodo }) {
           className={classes.textfield}
           margin="normal"
           label="Add New Todo"
+          required
           value={value}
           onChange={HandleChange}
         />
+
         <Button className={classes.button} type="submit">Submit</Button>
       </form>
 

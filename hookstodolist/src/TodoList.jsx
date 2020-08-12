@@ -46,7 +46,6 @@ function TodoList({
               <Todo
                 id={todo.id}
                 task={todo.task}
-                todos={todos}
                 completed={todo.completed}
                 toggleTodo={toggleTodo}
                 editTodo={editTodo}
