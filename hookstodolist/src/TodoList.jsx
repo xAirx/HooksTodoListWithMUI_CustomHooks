@@ -41,7 +41,7 @@ function TodoList({
     <>
       <Paper className={classes.muipaper} variant="outlined" square elevation={3}>
         <List>
-          {todos.map((todo) => (
+          {todos.map((todo, i) => (
             <>
               <Todo
                 id={todo.id}
@@ -51,14 +51,14 @@ function TodoList({
                 editTodo={editTodo}
                 removeTodo={removeTodo}
               />
-              <Divider />
+              {i < todos.length - 1 && <Divider />}
             </>
           ))}
         </List>
       </Paper>
     </>
-
   );
+  /* return null; */
 }
 
 export default TodoList;

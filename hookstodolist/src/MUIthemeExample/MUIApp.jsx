@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../css/style.css';
 import {
   FormControlLabel, createMuiTheme, Switch,
@@ -15,14 +15,15 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
+/* import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import uuid from 'uuid/v4';
+import uuid from 'uuid/v4'; */
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { ThemeWrapper, useDarkmode } from './index';
 import TodoList from '../TodoList';
 import TodoForm from '../TodoForm';
+import useTodoState from '../Hooks/useTodoState';
 
 export default function MUIapp() {
   /*   Users might have specified a preference for a light or dark theme.
@@ -84,7 +85,14 @@ export default function MUIapp() {
   /// /////
   /// /////
 
+  // This required us to return null inside todolist else react will crash because TODOS isnt containing anything.
+  /*   const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [""];
+ */
+
   const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
+  const {
+    todos, addTodo, removeTodo, toggleTodo, editTodo,
+  } = useTodoState(initialTodos);
 
   /*   const initialTodos = [
     { id: 1, task: 'Buy Cucumber', completed: false },
@@ -92,79 +100,11 @@ export default function MUIapp() {
     { id: 3, task: 'Buy Bread', completed: false },
   ];
  */
-  const [todos, setTodos] = useState(initialTodos);
-
-  /// /////
-  /// /////
 
   useEffect(() => {
     window.localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);/// passing in todos here we useffect running on rerender when we toggle dark to light mode.
 
-  /// /////
-  /// /////
-
-  const addTodo = (newTodoText) => {
-    setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
-  };
-
-  /// /////
-  /// /////
-
-  const removeTodo = (todoId) => {
-    console.log('removetodocalled');
-    // filter out removed todo
-
-    const updatedTodos = todos.filter((todo) => todo.id !== todoId);
-    console.log(updatedTodos);
-    // call setTodos with new todosArray
-    setTodos(updatedTodos);
-    /* console.log('These are the updated todos', todos); */
-  };
-
-  /// /////
-  /// /////
-
-  const editTodo = (todoId, newTodoText) => {
-    console.log('editTodoCalled');
-    // filter out removed todo
-    /*  const updatedTodos = todos.filter((todo) => todo.id === todoId);
-   /*  console.log(updatedTodos); */
-    /*  updatedTodos.task = newTodoText; */
-    // call setTodos with new todosArray
-    const updatedTodos = todos.map((todo) => (todo.id === todoId ? { ...todo, task: newTodoText } : todo));
-    console.log('this is the new todos changed from edit', updatedTodos);
-    setTodos(updatedTodos);
-    /* console.log('These are the updated todos', todos); */
-  };
-
-  /// /////
-  /// /////
-
-  /*   const toggleTodo = (todoId, completed) => {
-    const grabbedTodo = todos.filter((todo) => todo.id !== todoId);
-    console.log(grabbedTodo);
-    grabbedTodo.completed = completed !== true;
-
-    setTodos(grabbedTodo);
-  };
- */
-  const toggleTodo = (todoId) => {
-    const updatedTodos = todos.map((todo) => (todo.id === todoId ? {
-      ...todo,
-      completed: !todo.completed,
-    } : todo));
-    setTodos(updatedTodos);
-  };
-
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
   return (
     <ThemeWrapper theme={themeConfig}>
       <div className={classes.root}>

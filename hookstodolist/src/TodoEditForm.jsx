@@ -20,9 +20,9 @@ function EditTodoForm({
   const useStyles = makeStyles((theme) => ({
     textfield: {
       textAlign: 'center',
+      width: '500px',
     },
     formpaper: {
-      transition: '2s',
       /* root: { */
       /*   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', */
       border: 0,
@@ -72,7 +72,7 @@ function EditTodoForm({
 
         <TextField
           fullwidth
-         /*  label="Filled" */
+          label="You are editing this todo"
 /*               required
               className={classes.textfield}
           /* margin="normal" */
