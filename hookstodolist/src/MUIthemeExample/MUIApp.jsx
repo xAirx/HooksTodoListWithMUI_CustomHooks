@@ -91,26 +91,8 @@ would need to duplicate this code duplicate this code:
 
   // This required us to return null inside todolist else react will crash because TODOS isnt containing anything.
   /*   const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [""];
- */
-  /// /////
-  /// /////
 
-  const initialTodos = [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
-
-  /*   = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
- */
-
-  const {
-    todos, addTodo, removeTodo, toggleTodo, editTodo,
-  } = useTodoState(initialTodos);
-    /// /////
-  /// /////
-
-  /*  useEffect(() => {
-    window.localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]); *//// passing in todos here we useffect running on rerender when we toggle dark to light mode.
-
-  /* Instead we could make a new hook a custom hook called use local storage state or something.
+  /* Instead we could make a new hook a custom hook called use local storage state.
 
 And all we would do is pass in something like this.
 
@@ -138,9 +120,26 @@ So if we wanted to add in a dark mode or a light mode or a language preference l
 specify French instead of English we might want to store that in local storage but that doesn't really
 belong with the to dos in that array. You'd need a separate piece of state a separate piece of local storage so it would be best to use a
 
-custom hook.
-
+custom hook. as seen below: useLocalStorageState.
  */
+
+  /// /////
+  /// /////
+
+  const initialTodos = [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
+
+  /*   = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
+ */
+
+  // We can easily set and initialize our state and localstorage like this:
+  /*   const [mood, setMood] = useLocalStorageState('mood', 'happy');
+  console.log(mood); */
+
+  const {
+    todos, addTodo, removeTodo, toggleTodo, editTodo,
+  } = useTodoState(initialTodos);
+    /// /////
+  /// /////
 
   /*   const initialTodos = [
     { id: 1, task: 'Buy Cucumber', completed: false },
@@ -209,6 +208,8 @@ custom hook.
               />
               <TodoForm addTodo={addTodo} />
             </Grid>
+            {/*             <button onClick={() => setMood('angry')}>Click to get angry and test localStorage</button>
+ */}
           </Grid>
         </Paper>
 

@@ -1,129 +1,96 @@
-/* eslint-disable max-len */
-/* eslint-disable no-console */
-import { useState } from 'react';
-import { blue, pink, grey } from '@material-ui/core/colors';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { blue, pink, purple } from '@material-ui/core/colors';
 
 /*
 function myTheme(themeName = 'light') {
  */
 
-const themeObject = { /* = createMuiTheme({ */
-  /* themeName: "light", */
-  /*  typography: {
-         useNextVariants: true,
-         fontFamily: [
-             'lato',
-             'Roboto',
-             '"Helvetica Neue"',
-             '-apple-system',
-             'BlinkMacSystemFront',
-             '"Segoe UI"',
-             'Arial',
-             'sans-serif',
-             '"Apple Color Emoji"',
-             '"Segoe UI Emoji"',
-             '"Segoe UI Symbol"',
-         ].join(','),
-     }, */
+/* const themeObject = {
+
   palette: {
     primary: {
-      light: '#fafafa',
-      main: '#fafafa',
-      dark: '#fafafa',
-      contrastText: '#fff',
+      light: blue[800],
+      main: blue[500],
+      dark: blue[500],
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
+      light: pink[800],
+      main: pink[500],
+      dark: pink[500],
+    },
+
+  }
+}; */
+
+const lightTheme = {
+
+  palette: {
+    primary: {
+      light: blue[800],
+      main: blue[500],
+      dark: blue[500],
+    },
+    secondary: {
+      light: pink[800],
+      main: pink[500],
+      dark: pink[500],
     },
     type: 'light',
+    background: {
+      paper: '#9c27b0',
+    },
   },
-
 };
 
-// console.log(themeObject);
+const darkTheme = {
+
+  palette: {
+    primary: {
+      dark: '#9c27b0',
+
+      light: '#6a1b9a',
+
+      main: '#9c27b0',
+    },
+    secondary: {
+      dark: '#9c27b0',
+
+      light: '#6a1b9a',
+
+      main: '#9c27b0',
+    },
+    type: 'dark',
+  },
+};
+
+let themeObject = lightTheme;
+
+/* {
+  PaletteType === 'light' ? (
+    themeObject = lightTheme
+  ) : (
+    themeObject = darkTheme
+  );
+}
+ */
+/* console.log(themeObject); */
 /* themeConfig = responsiveFontSizes(themeConfig); */
 
 const useDarkmode = () => {
-  const MatchMedia = window.matchMedia
-            && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  // console.log('MatchMEDIA: THE PREFFERED MODE IS DARK', MatchMedia);
-
-  const localTheme = window.localStorage.getItem('theme');
-  if (localTheme) {
-    // console.log('LocalStorage is set->THIS IS THE ORIGNIALLOCALTHEME', localTheme);
-  } else {
-    // console.log('No localTheme set yet-> no localStorage');
-  }
-
-  let isLocalTheme = '';
-
-  /// /// Setting isLocalTheme to true or false so we can compare it to Matchmedia which is a boolean
-  if (localTheme && localTheme === 'dark') {
-    isLocalTheme = true;
-    // console.log('I set isLocalTheme to true val:', isLocalTheme);
-  } else if (localTheme && localTheme === 'light') {
-    isLocalTheme = false;
-    // console.log('I set isLocalTheme to false val:', isLocalTheme);
-  } else {
-    // console.log('SETTING default theme to matchmedia');
-    if (MatchMedia === true) {
-      themeObject.palette.type = 'dark';
-    } else {
-      themeObject.palette.type = 'light';
-    }
-  }
-
-  // console.log('THIS IS LOCALTHEME BEFORE CHECK: ', isLocalTheme);
-  // console.log('THIS IS MATCHMEDIA BEFORE CHECK: ', MatchMedia);
-
-  if (localTheme && isLocalTheme !== MatchMedia) {
-    themeObject.palette.type = localTheme;
-    // console.log('isLocalTheme is NOT equal to MatchMedia, I set the LocalStorage mode');
-  } else if (localTheme && isLocalTheme === MatchMedia) {
-    themeObject.palette.type = 'dark';
-    // console.log('isLocalTheme is equal to MatchMedia, I set the Preffered mode to MatchMedia');
-  } else {
-    // console.log('SETTING default theme to matchmedia');
-    if (MatchMedia === true) {
-      themeObject.palette.type = 'dark';
-    } else {
-      themeObject.palette.type = 'light';
-    }
-  }
-
   const [theme, setTheme] = useState(themeObject);
 
-  // console.log('THIS IS INSIDE USEDARKMODE');
-  const { palette: { type } } = theme;
+  console.log('THIS IS INSIDE USEDARKMODE');
   const toggleDarkMode = () => {
-    // console.log('You called  ToggleDarkMode');
-    // console.log('THIS IS THEME.TYPE', theme.palette);
+    console.log('You called  ToggleDarkMode');
+    console.log('THIS IS THEME.TYPE', themeObject);
     const updatedTheme = {
-      ...theme,
-      palette: {
-        ...theme.palette,
-        type: type === 'light' ? 'dark' : 'light',
-      },
-
+      ...themeObject,
+      type: themeObject === lightTheme ? themeObject = darkTheme : themeObject = lightTheme,
     };
-
-    if (updatedTheme.palette.type === 'light') {
-      window.localStorage.setItem('theme', 'light');
-      // console.log('THIS IS LOCALSTORAGE', window.localStorage.getItem('theme'));
-    } else {
-      window.localStorage.setItem('theme', 'dark');
-      // console.log('THIS IS LOCALSTORAGE', window.localStorage.getItem('theme'));
-    }
-
     setTheme(updatedTheme);
-    // console.log('THIS IS UPDATED THEME', updatedTheme);
-
-    /// /// Set localStorage /////
+    console.log('THIS IS THEME', theme);
   };
-  // console.log('THIS IS THEME', theme);
   return [theme, toggleDarkMode];
 };
 

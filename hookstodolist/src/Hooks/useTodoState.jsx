@@ -4,8 +4,9 @@ import uuid from 'uuid/v4';
 import useLocalStorageState from './useLocalStorageState';
 
 export default (initialTodos) => {
-  // uselocalStorage state will initialize the state and make the state for us.
-  // based off of localstorage.
+  // UselocalStorage state will initialize the state and make the state for us.
+  // Bsed off of localstorage. we are using useLocalStorageState to make sure to handle the
+  // Localstorage functionality here.
   const [todos, setTodos] = useLocalStorageState('todos', initialTodos);
 
   console.log('THESE ARE THE TODOS INSIDE USETODOSTATE HOOK', todos);
