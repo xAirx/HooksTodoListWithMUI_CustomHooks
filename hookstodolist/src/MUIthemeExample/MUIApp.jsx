@@ -24,6 +24,7 @@ import { ThemeWrapper, useDarkmode } from './index';
 import TodoList from '../TodoList';
 import TodoForm from '../TodoForm';
 import useTodoState from '../Hooks/useTodoState';
+import useLocalStorageState from '../Hooks/useLocalStorageState';
 
 export default function MUIapp() {
   /*   Users might have specified a preference for a light or dark theme.
@@ -85,14 +86,61 @@ export default function MUIapp() {
   /// /////
   /// /////
 
+  /* Now if we had another piece of state that we wanted distinct to local storage whenever it changed we
+would need to duplicate this code duplicate this code:
+
   // This required us to return null inside todolist else react will crash because TODOS isnt containing anything.
   /*   const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [""];
  */
+  /// /////
+  /// /////
 
-  const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
+  const initialTodos = [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
+
+  /*   = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
+ */
+
   const {
     todos, addTodo, removeTodo, toggleTodo, editTodo,
   } = useTodoState(initialTodos);
+    /// /////
+  /// /////
+
+  /*  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]); *//// passing in todos here we useffect running on rerender when we toggle dark to light mode.
+
+  /* Instead we could make a new hook a custom hook called use local storage state or something.
+
+And all we would do is pass in something like this.
+
+  /// /////
+  /// /////
+const [todos] = useLocalStorageState("todos", []);
+  /// /////
+  /// /////
+
+Use local storage state.
+We would give it a key.
+So in our case to dos and then a default value and we could pass in an array instead of the string of
+an array.
+
+So we pass in an array and then it's going to return to dos just like we have now.
+Something like that and maybe set to dos and then anytime we change to dos it will automatically sync
+to local storage.
+
+So that way we can move this code out move this code out.
+But also if we wanted to save anything to local storage and have it update or sync anytime that piece
+of State changed we could use that in this application in another application.
+
+It's a pretty common use case.
+So if we wanted to add in a dark mode or a light mode or a language preference like if a user could
+specify French instead of English we might want to store that in local storage but that doesn't really
+belong with the to dos in that array. You'd need a separate piece of state a separate piece of local storage so it would be best to use a
+
+custom hook.
+
+ */
 
   /*   const initialTodos = [
     { id: 1, task: 'Buy Cucumber', completed: false },
@@ -100,10 +148,6 @@ export default function MUIapp() {
     { id: 3, task: 'Buy Bread', completed: false },
   ];
  */
-
-  useEffect(() => {
-    window.localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);/// passing in todos here we useffect running on rerender when we toggle dark to light mode.
 
   return (
     <ThemeWrapper theme={themeConfig}>

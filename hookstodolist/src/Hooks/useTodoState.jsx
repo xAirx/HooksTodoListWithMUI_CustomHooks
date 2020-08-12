@@ -1,11 +1,18 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
-import uuid from 'uuidv4';
+import uuid from 'uuid/v4';
+import useLocalStorageState from './useLocalStorageState';
 
 export default (initialTodos) => {
-  const [todos, setTodos] = useState(initialTodos);
+  // uselocalStorage state will initialize the state and make the state for us.
+  // based off of localstorage.
+  const [todos, setTodos] = useLocalStorageState('todos', initialTodos);
+
+  console.log('THESE ARE THE TODOS INSIDE USETODOSTATE HOOK', todos);
+
   return {
     todos,
+
     addTodo: (newTodoText) => {
       setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
     },
