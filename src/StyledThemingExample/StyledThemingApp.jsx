@@ -49,7 +49,7 @@ https://medium.com/@rossbulat/react-dark-mode-with-styled-theming-and-context-57
 
 /// // CAN BE PUT IN ITS OWN FILE /THEME. and then we export all the constants.
 
-// define background colours for `mode` themeconst backgroundColor = theme('mode', {
+// define background colours for `mode` themeconst backgroxwundColor = theme('mode', {
 const backgroundColor = theme('mode', {
   light: '#fafafa',
   dark: '#222',

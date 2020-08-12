@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+
 import { useState } from 'react';
 import uuid from 'uuid/v4';
 import useLocalStorageState from './useLocalStorageState';

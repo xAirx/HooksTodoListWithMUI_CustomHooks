@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import {

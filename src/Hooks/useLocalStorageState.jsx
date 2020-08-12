@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useState, useEffect } from 'react';
 
 // if there is nothing in localStorage under the key we will use the defaultVal.
