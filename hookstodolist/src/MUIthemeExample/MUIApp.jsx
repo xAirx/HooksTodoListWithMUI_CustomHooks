@@ -37,12 +37,12 @@ export default function MUIapp() {
 
   For instance, you can enable the dark mode automatically: */
 
-  const [themeObject, toggleDarkMode] = useDarkmode();
-  console.log('THIS IS THEME INSIDE APP', themeObject);
+  const [theme, toggleDarkMode] = useDarkmode();
+  console.log('THIS IS THEME INSIDE APP', theme);
 
-  const themeConfig = createMuiTheme(themeObject);
+  const themeConfig = createMuiTheme(theme);
 
-  const useStyles = makeStyles((themeConfig) => ({
+  const useStyles = makeStyles(() => ({
     root: {
       flexGrow: 1,
     },
@@ -59,7 +59,7 @@ export default function MUIapp() {
       flexGrow: 1,
       alignSelf: 'center',
     },
-    muipaper: {
+    muipapermain: {
       /* root: { */
       /* background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', */
       border: 0,
@@ -72,6 +72,7 @@ export default function MUIapp() {
       padding: themeConfig.spacing(2),
       textAlign: 'center',
       color: themeConfig.palette.text.secondary,
+      background: themeConfig.palette.background.paper,
       /* } */
     },
   }));
@@ -181,20 +182,20 @@ custom hook. as seen below: useLocalStorageState.
                 style={{ marginRight: '20px', marginTop: '6px' }}
                 noWrap
               >
-                {themeObject.palette.type === 'light'
+                {themeConfig.palette.type === 'light'
                   ? <Brightness7Icon />
                   : <Brightness4Icon /> }
               </Typography>
 
               <FormControlLabel
-                checked={themeObject.palette.type === 'dark'}
+                checked={themeConfig.palette.type === 'dark'}
                 control={<Switch onClick={toggleDarkMode} />}
               />
             </IconButton>
           </Toolbar>
         </AppBar>
         <Paper
-          className={classes.muipaper}
+          className={classes.muipapermain}
           variant="outlined"
           square
           elevation={3}

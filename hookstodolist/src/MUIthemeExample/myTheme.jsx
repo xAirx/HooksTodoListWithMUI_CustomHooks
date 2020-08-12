@@ -39,7 +39,8 @@ const lightTheme = {
     },
     type: 'light',
     background: {
-      paper: '#9c27b0',
+      paper: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+
     },
   },
 };
@@ -62,6 +63,9 @@ const darkTheme = {
       main: '#9c27b0',
     },
     type: 'dark',
+    background: {
+      paper: 'linear-gradient(10deg, #FE6B8B 60%, #FF8E53 10%)',
+    },
   },
 };
 
