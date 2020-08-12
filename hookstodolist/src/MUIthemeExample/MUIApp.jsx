@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/style.css';
 import {
   FormControlLabel, createMuiTheme, Switch,
@@ -34,33 +34,12 @@ export default function MUIapp() {
   hook and the prefers-color-scheme media query.
 
   For instance, you can enable the dark mode automatically: */
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
+
   const [themeObject, toggleDarkMode] = useDarkmode();
   console.log('THIS IS THEME INSIDE APP', themeObject);
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
+
   const themeConfig = createMuiTheme(themeObject);
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
-  /// /////
+
   const useStyles = makeStyles((themeConfig) => ({
     root: {
       flexGrow: 1,
@@ -105,13 +84,22 @@ export default function MUIapp() {
   /// /////
   /// /////
 
-  const initialTodos = [
+  const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: 'Get started writing your own todos here!', completed: false }];
+
+  /*   const initialTodos = [
     { id: 1, task: 'Buy Cucumber', completed: false },
     { id: 2, task: 'Buy Eggs', completed: true },
     { id: 3, task: 'Buy Bread', completed: false },
   ];
-
+ */
   const [todos, setTodos] = useState(initialTodos);
+
+  /// /////
+  /// /////
+
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);/// passing in todos here we useffect running on rerender when we toggle dark to light mode.
 
   /// /////
   /// /////
