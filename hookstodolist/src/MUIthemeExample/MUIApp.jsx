@@ -75,7 +75,7 @@ export default function MUIapp() {
       height: '100vh',
       padding: themeConfig.spacing(2),
       textAlign: 'center',
-      color: themeConfig.palette.text.secondary,
+
       background: themeConfig.palette.background.paper,
       /* } */
     },
@@ -158,17 +158,7 @@ custom hook. as seen below: useLocalStorageState.
       <div className={classes.root}>
         <AppBar position="static" color="transparent">
           <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-            /* className={classes.menuButton} */
-              color="primary"
-              aria-label="open drawer"
-            >
-              <MenuIcon color="primary" />
-            </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Groceries App
-            </Typography>
+
             {/*     <IconButton aria-label="search" color="inherit">
               <SearchIcon />
             </IconButton>
@@ -179,6 +169,7 @@ custom hook. as seen below: useLocalStorageState.
             <IconButton
               aria-label="light and dark mode toggle"
               edge="end"
+              justify="center"
               color="inherit"
             >
               <Typography
@@ -186,9 +177,9 @@ custom hook. as seen below: useLocalStorageState.
                 style={{ marginRight: '20px', marginTop: '6px' }}
                 noWrap
               >
-                {themeConfig.palette.type === 'light'
-                  ? <Brightness7Icon />
-                  : <Brightness4Icon /> }
+                {themeConfig.palette.type === 'dark'
+                  ? <Brightness4Icon variant="outlined" />
+                  : <Brightness7Icon /> }
               </Typography>
 
               <FormControlLabel

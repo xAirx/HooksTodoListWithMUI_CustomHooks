@@ -15,7 +15,7 @@ function TodoList({
   const useStyles = makeStyles((theme) => ({
     muipaper: {
       /* root: { */
-      background: theme.palette.background.paper,
+      /*       background: theme.palette.background.paper, */
       border: 0,
       borderRadius: 3,
       /* boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', */
@@ -25,7 +25,7 @@ function TodoList({
       /*       height: , */
       padding: theme.spacing(2),
       textAlign: 'center',
-      color: theme.palette.text.secondary,
+
       boxShadow: '0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)',
       /* } */
     },

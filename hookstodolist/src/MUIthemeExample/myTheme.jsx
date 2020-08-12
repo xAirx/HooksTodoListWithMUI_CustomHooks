@@ -1,6 +1,8 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
-import { blue, pink, purple } from '@material-ui/core/colors';
+import {
+  blue, pink, purple, grey,
+} from '@material-ui/core/colors';
 import useLocalStorageState from '../Hooks/useLocalStorageState';
 
 /*
@@ -28,18 +30,22 @@ const lightTheme = {
 
   palette: {
     primary: {
-      light: blue[800],
-      main: blue[500],
-      dark: blue[500],
+      dark: '#FFFFFF',
+
+      light: '#FFFFFF',
+
+      main: '#FFFFFF',
     },
     secondary: {
-      light: pink[800],
-      main: pink[500],
-      dark: pink[500],
+      dark: '#FFFFFF',
+
+      light: '#FFFFFF',
+
+      main: '#FFFFFF',
     },
     type: 'light',
     background: {
-      paper: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+      paper: 'linear-gradient(130deg, #96bb7c 80%, #184d47 10%)',
 
     },
   },
@@ -49,22 +55,22 @@ const darkTheme = {
 
   palette: {
     primary: {
-      dark: '#9c27b0',
+      dark: '#FFFFFF',
 
-      light: '#6a1b9a',
+      light: '#FFFFFF',
 
-      main: '#9c27b0',
+      main: '#FFFFFF',
     },
     secondary: {
-      dark: '#9c27b0',
+      dark: '#FFFFFF',
 
-      light: '#6a1b9a',
+      light: '#FFFFFF',
 
-      main: '#9c27b0',
+      main: '#FFFFFF',
     },
     type: 'dark',
     background: {
-      paper: 'linear-gradient(10deg, #FE6B8B 60%, #FF8E53 10%)',
+      paper: 'linear-gradient(130deg, #0c2623 80%, #96bb7c 10%)',
     },
   },
 };
