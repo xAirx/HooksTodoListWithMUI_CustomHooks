@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import StyledThemingApp from './StyledThemingExample/StyledThemingApp';
 import MUIApp from './MUIthemeExample/MUIApp';
 
+
 ReactDOM.render(
   <React.StrictMode>
     {/*     <VanillaThemingApp /> */}
